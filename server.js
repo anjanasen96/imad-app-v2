@@ -5,21 +5,43 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articleOne={
-    title:'Article One',
-    heading:'Welcome to Article One',
-    date:'rst created on Jan32017',
-    content:`
-    <p>
-                     This is a simple article following the practical on how to write html documents. Nothing great but a beginning.
-                 </p>
-                  <p>
-                     This is a simple article following the practical on how to write html documents. Nothing great but a beginning.
-                 </p>
-                  <p>
-                     This is a simple article following the practical on how to write html documents. Nothing great but a beginning.
-                 </p>'
-`
+var articles = {
+    'article-one':{
+        title:'Article One',
+        heading:'Welcome to Article One',
+        date:'First created on Jan3 2017',
+        content:`
+        <p>
+                         This is a simple article following the practical on how to write html documents. Nothing great but a beginning.
+                     </p>
+                      <p>
+                         This is a simple article following the practical on how to write html documents. Nothing great but a beginning.
+                     </p>
+                      <p>
+                         This is a simple article following the practical on how to write html documents. Nothing great but a beginning.
+                     </p>'
+    `
+    },
+    'article-two':{
+        title:'Article Two',
+        heading:'Welcome to Article Two',
+        date:'Created on Jan5 2017',
+        content:`
+        <p>
+           This is in continuation with article one              
+        </p>'
+    `
+    },
+    'article-three': {
+        title:'Article Three',
+        heading:'Welcome to Article Three',
+        date:'It is created on Jan6 2017',
+        content:`
+        <p>
+           This is the last one. So article three will be served right here.
+        </p>'
+    `
+    }
 };
 
 function createTemplate (data)
@@ -73,16 +95,11 @@ app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
 
-app.get('/article-one', function (req, res) {
-  res.send(createTemplate(articleOne));
-});
-
-app.get('/article-two',function(req,res){
-     res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
-});
-
-app.get('/article-three',function(req,res){
-     res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
+app.get('/:articleName', function (req, res) {
+    //articleName = article-one
+    //articles[articleName] == {} content object for article-one
+    var articleName=req.params.articleName;
+  res.send(createTemplate(articles[articleName]));
 });
 
 
