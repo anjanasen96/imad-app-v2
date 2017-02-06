@@ -14,17 +14,15 @@ img.onclick= function () {
 };
 */
 
-var counter =0;
 var button = document.getElementById('counter');
 
 button.onclick= function() {
     var request = new XMLHttpRequest();
     
-    
     request.onReadyStateChange = function(){
       if (request.ReadyState === XMLHttpRequest.DONE)  {
           if (request.Status === 200){
-              counter = request.responseText;
+              var counter = request.responseText;
               var span = document.getElementById('count');
               span.innerHTML = counter.toString();
           }
