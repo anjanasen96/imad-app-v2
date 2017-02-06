@@ -33,6 +33,6 @@ button.onclick= function() {
    var span = document.getElementById('count');
    span.innerHTML = counter.toString();
    */
-   request.open('GET','http://http://anjanasen96.imad.hasura-app.io/counter',true);
+   request.open('GET','http://anjanasen96.imad.hasura-app.io/counter',true);
    request.send(null);
 };
