@@ -25,6 +25,8 @@ button.onclick= function() {
       if (request.ReadyState === XMLHttpRequest.DONE)  {
           if (request.Status === 200){
               counter = request.responseText;
+              var span = document.getElementById('count');
+              span.innerHTML = counter.toString();
           }
       }
     };
