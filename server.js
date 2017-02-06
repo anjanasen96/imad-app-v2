@@ -106,8 +106,8 @@ var counter = 0;
 app.get('/counter',function (req,res){
     counter =counter +1;
     res.send(counter.toString());
-}
-);
+});
+
 app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
