@@ -20,7 +20,7 @@ var counter = 0;
 button.onclick= function() {
     var request = new XMLHttpRequest();
     
-    request.onReadyStateChange = function(){
+    request.onreadystatechange = function(){
       if (request.readyState === XMLHttpRequest.DONE)  {
           if (request.status === 200){
               counter = request.responseText;
