@@ -2,6 +2,6 @@ console.log('Loaded!');
 
 var img = document.getElementById('img');
 
-img.onClick= function () {
+img.onclick= function () {
     img.style.marginleft ='200px';
 };
