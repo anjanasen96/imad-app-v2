@@ -50,9 +50,9 @@ button.onclick= function() {
 
 //Submit a name
 
-var nameInput = document.getElementById("name");
+var nameInput = document.getElementById('name');
 var nameValue = nameInput.value;
-var submit =  document.getElementById("submit_butn");
+var submit =  document.getElementById('submit_butn');
 
 submit.onclick = function() {
 
