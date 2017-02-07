@@ -18,11 +18,17 @@ var button = document.getElementById('counter');
 var counter = 0;
 
 button.onclick= function() {
+    
+    //Create a new HTTP request 
     var request = new XMLHttpRequest();
+    
+    // On state change, check if request is completed.
     
     request.onreadystatechange = function(){
       if (request.readyState === XMLHttpRequest.DONE)  {
-          if (request.status === 200){
+         
+         // Check if success
+        if (request.status === 200){
               counter = request.responseText;
               var span = document.getElementById('count');
               span.innerHTML = counter.toString();
