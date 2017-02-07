@@ -59,6 +59,10 @@ submit.onclick = function() {
     //Create a new HTTP request 
     var request = new XMLHttpRequest();
     
+    // Make a request to the counter endpoint(URL)
+   request.open('GET','http://anjanasen96.imad.hasura-app.io/submit-name?name='+nameValue,true);
+   request.send(null);
+    
     // On state change, browser will know. Detect state change.
     
     request.onreadystatechange = function(){
@@ -80,7 +84,5 @@ submit.onclick = function() {
       }
     };
 
-// Make a request to the counter endpoint(URL)
-   request.open('GET','http://anjanasen96.imad.hasura-app.io/submit-name?name='+nameValue,true);
-   request.send(null);
+
 };
