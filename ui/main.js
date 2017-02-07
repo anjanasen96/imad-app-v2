@@ -54,7 +54,7 @@ var nameInput = document.getElementById('name');
 var nameValue = nameInput.value;
 var submit =  document.getElementById('submit_butn');
 
-
+var names = [];
 submit.onclick = function() {
     //Create a new HTTP request 
     var request = new XMLHttpRequest();
@@ -68,7 +68,7 @@ submit.onclick = function() {
         if (request.status === 200){
             
             // Capture the respone and store it in a variable
-              var names = request.responseText;
+              names = request.responseText;
               names = JSON.parse(names);
               var list = '';
             for (var i =0; i <names.length; i++){
