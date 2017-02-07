@@ -120,7 +120,9 @@ app.get('/submit-name', function (req,res) {
    
   // var name = req.params.name;This is to extract from input in the form  xxx/name 
   
-  var name = req.query.name; // This is when to extract from query parameter in input
+  // This is when to extract from query parameter in input
+  
+  var name = req.query.name; 
    names.push(name);
    
    //JSON: Java Script Object Notation is used to convert object to string for sending back in response
