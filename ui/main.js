@@ -15,14 +15,14 @@ img.onclick= function () {
 */
 
 var button = document.getElementById('counter');
-var counter = 0;
+var counter;
 
 button.onclick= function() {
     
     //Create a new HTTP request 
     var request = new XMLHttpRequest();
     
-    // On state change, check if request is completed.
+    // On state change, browser will know. Detect state change.
     
     request.onreadystatechange = function(){
       if (request.readyState === XMLHttpRequest.DONE)  {
