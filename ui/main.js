@@ -54,10 +54,25 @@ var nameInput = document.getElementById('name');
 var nameValue = nameInput.value;
 var submit =  document.getElementById('submit_butn');
 
+
 submit.onclick = function() {
-
-
-var names = ['name1','name2', 'name3','name4'];
+    //Create a new HTTP request 
+    var request = new XMLHttpRequest();
+    
+    // On state change, browser will know. Detect state change.
+    
+    request.onreadystatechange = function(){
+      if (request.readyState === XMLHttpRequest.DONE)  {
+         
+         // Check if success
+        if (request.status === 200){
+            
+            // Capture the respone and store it in a variable
+              var names = request.responseText;
+              names = JSON.parse(names);
+        }
+      }
+    };
 
 var list = '';
 for (var i =0; i <names.length; i++){
@@ -65,4 +80,8 @@ for (var i =0; i <names.length; i++){
 }
 var ul = document.getElementById('nameList');
 ul.innerHTML = list;
+
+// Make a request to the counter endpoint(URL)
+   request.open('GET','http://anjanasen96.imad.hasura-app.io/submit-name?name=' + nameValue,true);
+   request.send(null);
 };
