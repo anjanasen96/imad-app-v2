@@ -118,7 +118,8 @@ app.get('/submit-name', function (req,res) {
    // Get name from request - xxxx/name
    // Another way of giving inout is with query paramter: xxx?name
    
-  // var name = req.params.name; // This is to extract from input in the form  xxx/name 
+  // var name = req.params.name;This is to extract from input in the form  xxx/name 
+  
   var name = req.query.name; // This is when to extract from query parameter in input
    names.push(name);
    
