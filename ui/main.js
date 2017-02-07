@@ -81,6 +81,6 @@ submit.onclick = function() {
     };
 
 // Make a request to the counter endpoint(URL)
-   request.open('GET','http://anjanasen96.imad.hasura-app.io/submit-name?name=' + nameValue,true);
+   request.open('GET','http://anjanasen96.imad.hasura-app.io/submit-name?name='+nameValue,true);
    request.send(null);
 };
