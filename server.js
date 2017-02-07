@@ -102,7 +102,7 @@ app.get('/ui/madi.png', function (req, res) {
 });
 
 
-var names = [];
+var listOfName = [];
 app.get('/submit-name', function (req,res) {
    // Get name from request - xxxx/name
    // var name = req.params.name;This is to extract from input in the form  xxx/name
@@ -111,10 +111,10 @@ app.get('/submit-name', function (req,res) {
    
   // This is when to extract from query parameter in input
     var name = req.query.name; 
-   names.push(name);
+   listOfName.push(name);
    
    //JSON: Java Script Object Notation is used to convert object to string for sending back in response
-   res.send(JSON.stringify(names));
+   res.send(JSON.stringify(listOfName));
     
 });
 
