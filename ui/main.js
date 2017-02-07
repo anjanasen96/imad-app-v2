@@ -51,13 +51,14 @@ button.onclick= function() {
 //Submit a name
 
 var nameInput = document.getElementById('name');
-var nameValue = nameInput.value;
 var submit =  document.getElementById('submit_butn');
 
 var names = [];
 submit.onclick = function() {
     //Create a new HTTP request 
     var request = new XMLHttpRequest();
+    
+    var nameValue = nameInput.value;
     
     // Make a request to the counter endpoint(URL)
    request.open('GET','http://anjanasen96.imad.hasura-app.io/submit-name?name='+nameValue,true);
