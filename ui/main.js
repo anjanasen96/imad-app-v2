@@ -70,16 +70,15 @@ submit.onclick = function() {
             // Capture the respone and store it in a variable
               var names = request.responseText;
               names = JSON.parse(names);
+              var list = '';
+            for (var i =0; i <names.length; i++){
+                    list += '<li>' + names[i]+ '</li>';
+                }
+                var ul = document.getElementById('nameList');
+                ul.innerHTML = list;
         }
       }
     };
-
-var list = '';
-for (var i =0; i <names.length; i++){
-    list += '<li>' + names[i]+ '</li>';
-}
-var ul = document.getElementById('nameList');
-ul.innerHTML = list;
 
 // Make a request to the counter endpoint(URL)
    request.open('GET','http://anjanasen96.imad.hasura-app.io/submit-name?name=' + nameValue,true);
