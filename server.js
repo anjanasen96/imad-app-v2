@@ -113,6 +113,18 @@ app.get('/ui/main.js', function (req, res) {
 });
 
 
+var names = [];
+app.get('/submit-name/:name', function (req,res) {
+   // Get name from request
+   
+   var name = req.params.name;
+   names.push(name);
+   
+   //JSON: Java Script Object Notation is used to convert object to string for sending back in response
+   res.send(JSON.stringify(names));
+    
+});
+
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
 app.listen(8080, function () {
   console.log(`IMAD course app listening on port ${port}!`);
