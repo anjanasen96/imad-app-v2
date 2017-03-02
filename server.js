@@ -3,6 +3,15 @@ var morgan = require('morgan');
 var path = require('path');
 
 var app = express();
+var Pool = require('pg').Pool;// Create connection pool. DB used is postgress
+var config = {          // Configuration for connection to DB
+    user: 'anjanasen96',
+    database: 'anjanasen96',
+    host: 'db.imad.hasura-app.io',
+    port: '5432',
+    password: process.env.DB_PASSWORD
+};
+
 app.use(morgan('combined'));
 
 var articles = {
@@ -91,6 +100,23 @@ app.get('/counter', function (req, res) {
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
+});
+
+//Connection pool is created globally so that it remains as long as app is alive
+var pool = new Pool(config);
+
+app.get('/test-db', function (req,res) {
+    // Make a select request to DB
+    pool.query('SELECT * FROM test',function(err,result){
+        if (err) {                              // return response with the result/error
+            res.status(500).send(err,toString());
+        }
+        else{
+            res.send(JSON.stringify(result));
+        }
+        
+    });
+    
 });
 
 app.get('/ui/style.css', function (req, res) {
