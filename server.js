@@ -13,7 +13,7 @@ var config = {          // Configuration for connection to DB
 };
 
 app.use(morgan('combined'));
-
+/*
 var articles = {
     'article-one':{
         title:'Article One',
@@ -52,6 +52,7 @@ var articles = {
     `
     }
 };
+*/
 
 function createTemplate (data)
 {
