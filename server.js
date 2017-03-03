@@ -130,7 +130,7 @@ app.get('/ui/madi.png', function (req, res) {
 });
 
 function hash(input,salt){
-    //Creating a hash for the given input.
+    //Creating a hash for the given input. Check nodejs documentation for more info on crypto.
     var hashed = crypto.pbkdf2Sync(input,salt,10000,512,'sha512');
     return hashed.toString('hex');
 }
