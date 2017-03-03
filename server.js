@@ -1,9 +1,10 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
-
 var app = express();
 var Pool = require('pg').Pool;// Create connection pool. DB used is postgress
+var crypto = require('crypto');
+
 var config = {          // Configuration for connection to DB
     user: 'anjanasen96',
     database: 'anjanasen96',
@@ -126,6 +127,16 @@ app.get('/ui/style.css', function (req, res) {
 
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
+});
+
+function hash(input,salt){
+    //Creating a hash for the given input.
+    var hashed = crypto.pbkdf2Sync(input,salt,10000,512,'sha512');
+    return (hash.toSting('hex'));
+}
+app.get('/hash/:input',function(req,res){
+    var hashedString= hash(req.params.input,'this-is-some-random-string');
+    res.send(hashedString);
 });
 
 
