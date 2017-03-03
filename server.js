@@ -148,7 +148,7 @@ app.get('/submit-name', function (req,res) {
 app.get('/articles/:articleName', function (req, res) {
     //articleName = article-one
     //articles[articleName] == {} content object for article-one
-    // Without the single quote, to 
+    // Single quote to differentiate '-' in articleName from minus sign
     pool.query("SELECT * FROM article where title = '" + req.params.articleName +`'`, function(err,result){
        if (err) {
            res.status(500).send(err,toString());
