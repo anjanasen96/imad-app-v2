@@ -163,6 +163,18 @@ app.post('/create-user',function(req,res){
         }
     })
 });
+
+app.post('/login',function(req,res){
+   
+       pool.query('SELECT from "user" WHERE (username,password) VALUES ($1,$2)',[username,dbString],function(err,result){
+        if (err) {                              // return response with the result/error
+            res.status(500).send(err,toString());
+        }
+        else {
+            res.send('User successfully created: '+ username);
+        }
+    }) 
+});
 var listOfName = [];
 app.get('/submit-name', function (req,res) {
    // Get name from request - xxxx/name
