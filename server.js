@@ -176,7 +176,7 @@ app.post('/login',function(req,res){
         else {
             if (result.rows.length === 0){
              //res.send('User credentials incorrect'); 
-             res.status(403).send('Incorrect credentials');
+             res.status(403).send('Check the credentials.');
                
             }
             else{
