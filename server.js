@@ -136,7 +136,7 @@ that is of 512 bytes. This is to ensure higher security. 'salt' is randomly gene
 function hash(input,salt){
     //Creating a hash for the given input. Check nodejs documentation for more info on crypto.
     var hashed = crypto.pbkdf2Sync(input,salt,10000,512,'sha512');
-    return hashed.toString('hex');
+    return ["pbkdf2sync","10000",salt,hashed.toString('hex')].join("$");
 }
 app.get('/hash/:input',function(req,res){
     var hashedString= hash(req.params.input,'this-is-some-random-string');
