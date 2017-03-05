@@ -15,7 +15,7 @@ var config = {          // Configuration for connection to DB
 };
 
 app.use(morgan('combined'));
-app.use(bodyParser.json()) // Tell express app that incase json content is encountered,load it in req.body variable
+app.use(bodyParser.json()); // Tell express app that incase json content is encountered,load it in req.body variable
 /*
 var articles = {
     'article-one':{
