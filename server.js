@@ -4,6 +4,7 @@ var path = require('path');
 var app = express();
 var Pool = require('pg').Pool;// Create connection pool. DB used is postgress
 var crypto = require('crypto');
+var bodyParser = require('body-parser');// express library
 
 var config = {          // Configuration for connection to DB
     user: 'anjanasen96',
@@ -14,6 +15,7 @@ var config = {          // Configuration for connection to DB
 };
 
 app.use(morgan('combined'));
+app.use(bodyParser.json()) // Tell express app that incase json content is encountered,load it in req.body variable
 /*
 var articles = {
     'article-one':{
@@ -143,7 +145,13 @@ app.get('/hash/:input',function(req,res){
     res.send(hashedString);
 });
 
-app.get('/create-user',function(req,res){
+//Username and passowrd will be sent as part of body and not url. 
+app.post('/create-user',function(req,res){
+    //extract username and passord from body of request.
+    
+    var username=req.body.username;
+    var password=req.body.password;
+    
     var salt=crypto.randomBytes('128').toString('hex');
     var dbString=hash(password,salt);
     pool.query('INSERT into "user" (username,passord) VALUES ($1,$2)',[username,dbString],function(err,result){
