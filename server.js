@@ -19,7 +19,7 @@ app.use(morgan('combined'));
 app.use(bodyParser.json()); // Tell express app that incase json content is encountered,load it in req.body variable
 app.use(session({
     secret: 'someRandomValue',
-    cookie:{maxAge:1000 * 60 * 60 * 24 *30}
+    cookie: { maxAge: 1000 * 60 * 60 * 24 * 30}
     
 }));
     
@@ -213,9 +213,9 @@ app.get('/check-login',function(req,res){
     
     if (req.session && req.session.auth && req.session.auth.userId)
     {
-        res.send ("You are logged in: "+ req.session.auth.userId.toString());
+        res.send("You are logged in: "+ req.session.auth.userId.toString());
     } else {
-        res.send('You are not logged in');
+        res.send('You are not logged in.' + req.session.auth.userId.toString());
     }
     
 });
