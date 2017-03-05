@@ -166,15 +166,34 @@ app.post('/create-user',function(req,res){
 
 app.post('/login',function(req,res){
    
-       pool.query('SELECT from "user" WHERE (username,password) VALUES ($1,$2)',[username,dbString],function(err,result){
+        var username=req.body.username;
+        var password=req.body.password;
+        
+       pool.query('SELECT from "user" WHERE (username) VALUES ($1)',[username],function(err,result){
         if (err) {                              // return response with the result/error
-            res.status(500).send(err,toString());
+            res.status(403).send(err,toString());
         }
         else {
+            if (result.rows.length === 0){
+               res.send('User credentials incorrect'); 
+            }
+            else{
+                //Match the password
+                var dbString = result.rows[0].password;
+                var salt = dbString.split('$')[2];
+                var hasedString = hash(password,salt);
+                if (dbString === hashedString){
+                    res.send('Credentials correct');
+                }
+                else {
+                    res.status(403).send('Incorrect username/password.');
+                }
+            }
             res.send('User successfully created: '+ username);
         }
-    }) 
+     });
 });
+
 var listOfName = [];
 app.get('/submit-name', function (req,res) {
    // Get name from request - xxxx/name
