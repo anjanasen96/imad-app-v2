@@ -61,7 +61,7 @@ submit.onclick = function() {
     var request = new XMLHttpRequest();
     
     // On state change, browser will know. Detect state change.
-    request.onreadystatedchange = function(){
+    request.onreadystatechange = function(){
       if (request.readyState === XMLHttpRequest.DONE)  {
          
          // Check if success
