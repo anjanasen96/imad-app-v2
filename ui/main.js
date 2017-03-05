@@ -60,6 +60,23 @@ submit.onclick = function() {
     //Create a new HTTP request 
     var request = new XMLHttpRequest();
     
+    // On state change, browser will know. Detect state change.
+    request.onreadystatedchange = function(){
+      if (request.readyState === XMLHttpRequest.DONE)  {
+         
+         // Check if success
+        if (request.status === 200){
+           alert('Log in is successful');
+        }
+        else if (request.status === 403){
+            alert('Username/password is incorrect');
+        }
+        else if (request.status === 500){
+            alert('Something went worng in the server');
+        }
+      }
+    };
+    
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
     console.log(username);
@@ -71,25 +88,4 @@ submit.onclick = function() {
    request.setRequestHeader('Content-Type','application/json');
    request.send(JSON.stringify({username: username, password: password}));
     
-    // On state change, browser will know. Detect state change.
-    
-    request.onreadystatedchange = function(){
-      if (request.readyState === XMLHttpRequest.DONE)  {
-         
-         // Check if success
-        if (request.status === 200){
-            
-           console.log('User logged in');
-           alert('Log in is successful');
-        }
-        else if (request.status === 403){
-            alert('Username/password is incorrect');
-        }
-        else if (request.status === 500){
-            alert('Something went worng in the server');
-        }
-      }
-    };
-
-
 };
