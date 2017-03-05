@@ -169,7 +169,7 @@ app.post('/login',function(req,res){
         var username=req.body.username;
         var password=req.body.password;
         
-       pool.query('SELECT from "user" WHERE username = $1',[username],function(err,result){
+       pool.query('SELECT * from "user" WHERE username = $1',[username],function(err,result){
         if (err) {                              // return response with the result/error
             res.status(403).send(err,toString());
         }
@@ -178,20 +178,19 @@ app.post('/login',function(req,res){
                res.send('User credentials incorrect'); 
             }
             else{
-                //Match the password
-                var dbString = result.rows[0].password;
-                var salt = dbString.split('$')[2];
-                var hasedString = hash(password,salt);
-                if (dbString === hashedString){
-                    res.send('Credentials correct');
-                }
-                else {
-                    res.status(403).send('Incorrect username/password.');
-                }
-            }
-            res.send('User successfully created: '+ username);
+                    //Match the password
+                    var dbString = result.rows[0].password;
+                    var salt = dbString.split('$')[2];
+                    var hasedString = hash(password,salt);
+                    if (dbString === hashedString){
+                        res.send('Credentials correct');
+                    }
+                    else {
+                        res.status(403).send('Incorrect username/password.');
+                    }
         }
-     });
+    }
+});
 });
 
 var listOfName = [];
