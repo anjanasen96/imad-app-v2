@@ -51,10 +51,7 @@ button.onclick= function() {
 
 //Submit Login credentials
 
-var username = document.getElementById('username').value;
-var password = document.getElementById('password').value;
-console.log(username);
-console.log(password);
+
 
 var submit =  document.getElementById('submit_butn');
 
@@ -63,6 +60,10 @@ submit.onclick = function() {
     //Create a new HTTP request 
     var request = new XMLHttpRequest();
     
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+    console.log(username);
+    console.log(password);
     
     // Make a request to the login endpoint(URL)
    
