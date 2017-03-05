@@ -5,6 +5,7 @@ var app = express();
 var Pool = require('pg').Pool;// Create connection pool. DB used is postgress
 var crypto = require('crypto');
 var bodyParser = require('body-parser');// express library
+var session = require('express-session');
 
 var config = {          // Configuration for connection to DB
     user: 'anjanasen96',
@@ -16,6 +17,13 @@ var config = {          // Configuration for connection to DB
 
 app.use(morgan('combined'));
 app.use(bodyParser.json()); // Tell express app that incase json content is encountered,load it in req.body variable
+app.use(session({
+    secret: 'someRandomValue',
+    cookie:{maxAge:1000 * 60 * 60 * 24 *30}
+    
+}));
+    
+ 
 /*
 var articles = {
     'article-one':{
@@ -161,7 +169,7 @@ app.post('/create-user',function(req,res){
         else {
             res.send('User successfully created: '+ username);
         }
-    })
+    });
 });
 
 app.post('/login',function(req,res){
@@ -185,6 +193,12 @@ app.post('/login',function(req,res){
                     var salt = dbString.split('$')[2];
                     var hashedString = hash(password,salt);
                     if (dbString === hashedString){
+                        
+                        // Set the session
+                        req.session.auth = {userid: result.rows[0].id};
+                        // set cookie with a session id.
+                        //Internally on the server side, it maps the cookie with an object
+                        //{auth: {userId}}
                         res.send('Credentials correct');
                     }
                     else {
@@ -193,6 +207,17 @@ app.post('/login',function(req,res){
         }
     }
 });
+});
+
+app.get('/check-login',function(req,res){
+    
+    if (req.session && req.session.auth && req.session.auth.userId)
+    {
+        res.send ("You are logged in: "+ req,session.auth.userId.toString());
+    } else {
+        res.send('You are not logged in');
+    }
+    
 });
 
 var listOfName = [];
