@@ -106,7 +106,6 @@ app.get('/', function (req, res) {
 
 //Connection pool is created globally so that it remains as long as app is alive
 var pool = new Pool(config);
-
 app.get('/test-db', function (req,res) {
     // Make a select request to DB
     pool.query('SELECT * FROM test',function(err,result){
@@ -128,6 +127,11 @@ app.get('/ui/style.css', function (req, res) {
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
+
+/*pbkdf25Sync: password based key derivative function. This function is taking the 'input',
+appending the salt(this-is-some-random-string) and hashing it 10000 times to create a hashed value
+that is of 512 bytes. This is to ensure higher security. 'salt' is randomly generated.
+*/
 
 function hash(input,salt){
     //Creating a hash for the given input. Check nodejs documentation for more info on crypto.
