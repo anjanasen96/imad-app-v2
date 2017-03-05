@@ -63,7 +63,6 @@ submit.onclick = function() {
     //Create a new HTTP request 
     var request = new XMLHttpRequest();
     
-    var nameValue = nameInput.value;
     
     // Make a request to the login endpoint(URL)
    
