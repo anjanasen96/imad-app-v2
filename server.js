@@ -169,7 +169,7 @@ app.post('/login',function(req,res){
         var username=req.body.username;
         var password=req.body.password;
         
-       pool.query('SELECT from "user" WHERE (username) VALUES ($1)',[username],function(err,result){
+       pool.query('SELECT from "user" WHERE username = $1',[username],function(err,result){
         if (err) {                              // return response with the result/error
             res.status(403).send(err,toString());
         }
