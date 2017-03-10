@@ -315,7 +315,7 @@ function loadComments () {
         }
     };
     
-    request.open('GET', '/get-comments/' + 'article-one', true);
+    request.open('GET', '/get-comments/' + 'article-two', true);
     request.send(null);
 }
 
