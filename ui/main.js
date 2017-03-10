@@ -196,6 +196,9 @@ function loadLogin() {
             if (request.Status === 200){
                 loadLoggedInUser(this.responeText);
             }
+            else if (request.Status === 304){
+             loadLoggedInUser(this.responeText);   
+            }
             else {
                 loadLogInForm();
             }
