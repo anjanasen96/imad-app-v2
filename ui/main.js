@@ -92,6 +92,15 @@ submit.onclick = function() {
 
 */
 
+function loadLoggedInUser(username){
+    var logInArea = document.getElementById('login_area');
+    
+    logInArea.innerHtml = `
+        <h3> Hi! <i>${username}</i></h3>
+        <a href="/logout">Logout</a>`
+        ;
+}
+
 function loadLogInForm(){
     var loginHtml = `
         <h3>Login/Register to unlock awesome features</h3>
@@ -127,7 +136,7 @@ function loadLogInForm(){
                   submit.value = 'Login';
               }
               //loadLogin();
-              
+              console.log(username);
               loadLoggedInUser(username);
           }  
           // Not done yet
@@ -179,14 +188,7 @@ function loadLogInForm(){
 }
 
 
-function loadLoggedInUser(username){
-    var logInArea = document.getElementById('login_area');
-    
-    logInArea.innerHtml = `
-        <h3> Hi! <i>${username}</i></h3>
-        <a href="/logout">Logout</a>`
-        ;
-}
+
 
 
 
