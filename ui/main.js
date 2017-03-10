@@ -198,7 +198,7 @@ function loadLogin() {
             }
             
             else {
-                //loadLogInForm();
+                loadLogInForm();
                 loadLoggedInUser(this.responeText);
             }
         }
