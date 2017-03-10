@@ -323,3 +323,4 @@ function loadComments () {
 loadLogin();
 loadArticles();
 loadComments();
+loadCommentForm();
