@@ -51,7 +51,7 @@ button.onclick= function() {
 
 //Submit Login credentials
 
-
+/*
 
 var submit =  document.getElementById('submit_butn');
 
@@ -89,3 +89,37 @@ submit.onclick = function() {
    request.send(JSON.stringify({username: username, password: password}));
     
 };
+
+*/
+
+function loadLoggedInUser(username){
+    var logInArea = document.getElementById('login_area');
+    
+    logInArea.innerHtml = 
+    <h3> Hi! <i>${username}</i></h3>
+    <a href="/logout">Logout</a>
+    ;
+}
+
+function loadLogin() {
+    // Check if the user is already logged in
+    
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function(){
+        if (request.readyState === XMLHttpRequest.DONE)  {
+            if (request.Status === 200){
+                loadLoggedInUser(this.responeText);
+            }
+            else {
+                loadLogInForm();
+            }
+        }
+    
+    };
+    
+    request.open('GET', '/check-login', true);
+    request.send(null);
+    }
+
+loadLogin();
+loadArticles();
