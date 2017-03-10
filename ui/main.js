@@ -126,6 +126,7 @@ function loadLogInForm(){
                   submit.value = 'Login';
               }
               //loadLogin();
+              var username = document.getElementById('username').value;
               loadLoggedInUser(username);
           }  
           // Not done yet
