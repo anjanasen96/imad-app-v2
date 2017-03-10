@@ -99,8 +99,7 @@ function loadComments () {
 
 
 // The first thing to do is to check if the user is logged in!
-/* loadLogin();
+loadLogin();
 loadComments();
-*/
 
 alert("I am inside article.js");
