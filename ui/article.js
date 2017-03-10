@@ -59,6 +59,14 @@ function loadLogin () {
     request.send(null);
 }
 
+function escapeHTML (text)
+{
+    var $text = document.createTextNode(text);
+    var $div = document.createElement('div');
+    $div.appendChild($text);
+    return $div.innerHTML;
+}
+
 
 function loadComments () {
         // Check if the user is already logged in
