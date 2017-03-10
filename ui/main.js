@@ -319,8 +319,9 @@ function loadComments () {
     request.send(null);
 }
 
-
 loadLogin();
 loadArticles();
+/*
 loadComments();
 loadCommentForm();
+*/
