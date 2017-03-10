@@ -240,8 +240,5 @@ function loadArticles () {
     request.send(null);
 }
 
-
-
 loadLogin();
 loadArticles();
-
