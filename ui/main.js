@@ -92,14 +92,6 @@ submit.onclick = function() {
 
 */
 
-function loadLoggedInUser(username){
-    var logInArea = document.getElementById('login_area');
-    
-    logInArea.innerHtml = `
-        <h3> Hi! <i>${username}</i></h3>
-        <a href="/logout">Logout</a>`
-        ;
-}
 
 function loadLogInForm(){
     var loginHtml = `
@@ -135,9 +127,8 @@ function loadLogInForm(){
                   alert('Something went wrong on the server');
                   submit.value = 'Login';
               }
-              //loadLogin();
-              console.log(username);
-              loadLoggedInUser(username);
+              loadLogin();
+              
           }  
           // Not done yet
         };
@@ -188,7 +179,14 @@ function loadLogInForm(){
 }
 
 
-
+function loadLoggedInUser(username){
+    var logInArea = document.getElementById('login_area');
+    
+    logInArea.innerHtml = `
+        <h3> Hi! <i>${username}</i></h3>
+        <a href="/logout">Logout</a>`
+        ;
+}
 
 
 
