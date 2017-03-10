@@ -283,6 +283,7 @@ app.get('/get-articles', function (req, res) {
    });
 });
 
+/*
 app.get('/get-comments/:articleName', function (req, res) {
    // make a select request
    // return a response with the results
@@ -296,7 +297,7 @@ app.get('/get-comments/:articleName', function (req, res) {
    });
 });
 
-
+*/
 
 app.post('/submit-comment/:articleName', function (req, res) {
    // Check if the user is logged in
