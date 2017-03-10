@@ -67,6 +67,7 @@ function escapeHTML (text)
     return $div.innerHTML;
 }
 
+/*
 
 function loadComments () {
         // Check if the user is already logged in
@@ -96,10 +97,9 @@ function loadComments () {
     request.open('GET', '/get-comments/' + currentArticleTitle, true);
     request.send(null);
 }
+*/
 
-
-alert('I am inside article.js');
 // The first thing to do is to check if the user is logged in!
 loadLogin();
-loadComments();
+loadCommentForm();
 
