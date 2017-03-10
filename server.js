@@ -104,18 +104,21 @@ function createTemplate (data)
     return htmlTemplate;
 }
 
+/*
+
 var counter = 0;
 app.get('/counter', function (req, res) {
     counter = counter +1;
   res.send(counter.toString());
 });
-
+*/
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
 //Connection pool is created globally so that it remains as long as app is alive
 var pool = new Pool(config);
+/*
 app.get('/test-db', function (req,res) {
     // Make a select request to DB
     pool.query('SELECT * FROM test',function(err,result){
@@ -129,6 +132,7 @@ app.get('/test-db', function (req,res) {
     });
     
 });
+*/
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
@@ -184,7 +188,7 @@ app.post('/login',function(req,res){
         else {
             if (result.rows.length === 0){
              //res.send('User credentials incorrect'); 
-             res.status(403).send('Check the credentials.');
+             res.status(403).send('Username/password is invalid');
                
             }
             else{
@@ -211,13 +215,27 @@ app.post('/login',function(req,res){
 
 app.get('/check-login',function(req,res){
     
-    if (req.session && req.session.auth && req.session.auth.userId)
+/*    if (req.session && req.session.auth && req.session.auth.userId)
+
     {
         res.send("You are logged in: "+ req.session.auth.userId.toString());
     } else {
         res.send('You are not logged in.');
     }
-    
+*/
+
+    if (req.session && req.session.auth && req.session.auth.userId) {
+       // Load the user object
+       pool.query('SELECT * FROM "user" WHERE id = $1', [req.session.auth.userId], function (err, result) {
+           if (err) {
+              res.status(500).send(err.toString());
+           } else {
+              res.send(result.rows[0].username);    
+           }
+       });
+   } else {
+       res.status(400).send('You are not logged in');
+   }
 });
 
 var listOfName = [];
