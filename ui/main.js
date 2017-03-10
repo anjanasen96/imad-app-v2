@@ -109,6 +109,7 @@ function loadLogInForm(){
     submit.onclick = function () {
         // Create a request object
         var request = new XMLHttpRequest();
+        var username = document.getElementById('username').value;
         
         // Capture the response and store it in a variable
         request.onreadystatechange = function () {
@@ -126,14 +127,14 @@ function loadLogInForm(){
                   submit.value = 'Login';
               }
               //loadLogin();
-              var username = document.getElementById('username').value;
+              
               loadLoggedInUser(username);
           }  
           // Not done yet
         };
     
     // Make the request
-        var username = document.getElementById('username').value;
+        //var username = document.getElementById('username').value;
         var password = document.getElementById('password').value;
         console.log(username);
         console.log(password);
