@@ -330,7 +330,7 @@ app.post('/submit-comment/:articleName', function (req, res) {
 });
 */
 
-/*
+
 app.get('/articles/:articleName', function (req, res) {
     //articleName = article-one
     //articles[articleName] == {} content object for article-one
@@ -352,7 +352,6 @@ app.get('/articles/:articleName', function (req, res) {
     
 });
 
-*/
 
 app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
