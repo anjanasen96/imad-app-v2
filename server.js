@@ -296,6 +296,7 @@ app.get('/get-comments/:articleName', function (req, res) {
    });
 });
 
+/*
 
 app.post('/submit-comment/:articleName', function (req, res) {
    // Check if the user is logged in
@@ -327,6 +328,7 @@ app.post('/submit-comment/:articleName', function (req, res) {
         res.status(403).send('Only logged in users can comment');
     }
 });
+*/
 
 /*
 app.get('/articles/:articleName', function (req, res) {
