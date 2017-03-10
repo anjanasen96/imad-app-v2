@@ -125,7 +125,8 @@ function loadLogInForm(){
                   alert('Something went wrong on the server');
                   submit.value = 'Login';
               }
-              loadLogin();
+              //loadLogin();
+              loadLoggedInUser(username);
           }  
           // Not done yet
         };
