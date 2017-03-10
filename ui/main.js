@@ -193,7 +193,7 @@ function loadLogin() {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
         if (request.readyState === XMLHttpRequest.DONE)  {
-            if (request.Status === 200 || request.status === 304){
+            if (request.Status === 200 || request.Status === 304){
                loadLoggedInUser(this.responeText);
             }
             
