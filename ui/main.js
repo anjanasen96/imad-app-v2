@@ -274,7 +274,7 @@ function loadCommentForm () {
         
         // Make the request
         var comment = document.getElementById('comment_text').value;
-        request.open('POST', '/submit-comment/' + 'article-one', true);
+        request.open('POST', '/submit-comment/' + 'article-two', true);
         request.setRequestHeader('Content-Type', 'application/json');
         request.send(JSON.stringify({comment: comment}));  
         submit.value = 'Submitting...';
