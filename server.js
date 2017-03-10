@@ -238,6 +238,7 @@ app.get('/check-login',function(req,res){
    }
 });
 
+/*
 var listOfName = [];
 app.get('/submit-name', function (req,res) {
    // Get name from request - xxxx/name
@@ -253,10 +254,12 @@ app.get('/submit-name', function (req,res) {
    res.send(JSON.stringify(listOfName));
     
 });
+*/
 
 app.get('/logout',function(req,res){
     delete req.session.auth;
-    res.send('Logged Out.');
+    //res.send('Logged Out.');
+    res.send('<html><body>Logged out!<br/><br/><a href="/">Back to home</a></body></html>');
 });
 
 app.get('/articles/:articleName', function (req, res) {
