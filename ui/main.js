@@ -181,7 +181,7 @@ function loadLogInForm(){
 
 
 function loadLoggedInUser(username){
-    var logInArea = document.getElementById('login_area');
+    //var logInArea = document.getElementById('login_area');
     var welcomeinHtml = 
     `
         <h3> Hi! <i>${username}</i></h3>
@@ -189,7 +189,7 @@ function loadLoggedInUser(username){
     `
     ;
     
-    logInArea.innerHtml = welcomeinHtml;
+    document.getElementById('login_area').innerHTML = welcomeinHtml;
 }
 
 
@@ -201,7 +201,7 @@ function loadLogin() {
     request.onreadystatechange = function(){
         if (request.readyState === XMLHttpRequest.DONE)  {
             if (request.status === 200 || request.status === 304) {
-               loadLoggedInUser(this.responeText);
+               loadLoggedInUser(this.responseText);
             }
             
             else {
